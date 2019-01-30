@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Maiev\EC\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Maiev\EC\ECManager;
