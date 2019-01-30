@@ -24,7 +24,7 @@ class ECManager
      * @param $data
      * @return string
      */
-    public function send($method, $path, $data = [])
+    protected function send($method, $path, $data = [])
     {
         try {
             $response = $this->client->request($method, $path, [
@@ -41,7 +41,7 @@ class ECManager
      * generate curl headers
      * @return array
      */
-    public function gerateHeaders()
+    protected function gerateHeaders()
     {
         return [
             'authorization' => $this->accessToken(),
@@ -54,7 +54,7 @@ class ECManager
      * fetch access token
      * @return bool
      */
-    public function accessToken()
+    protected function accessToken()
     {
         $response = $this->client->post('auth/accesstoken', [
             'json' => [
