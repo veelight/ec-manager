@@ -15,7 +15,7 @@ class ECServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/config/ec-manager.php' => config_path('ec-manager.php')
+            __DIR__ . '../config/ec-manager.php' => config_path('ec-manager.php')
         ]);
     }
 
