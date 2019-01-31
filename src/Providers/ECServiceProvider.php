@@ -26,15 +26,9 @@ class ECServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ECManager::class, function ($app) {
+        $this->app->singleton('EC', function ($app) {
             return new ECManager();
         });
     }
 
-    public function provides()
-    {
-        return [
-            ECManager::class
-        ];
-    }
 }
