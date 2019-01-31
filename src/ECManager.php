@@ -10,11 +10,21 @@ class ECManager
 
     protected $baseURI = 'https://open.workec.com/';
 
+    protected $corpID;
+
+    protected $appID;
+
+    protected $appSecret;
+
     public function __construct()
     {
         $this->client = new Client([
             'base_uri' => $this->baseURI
         ]);
+
+        $this->corpID = config('ec-manager.CorpID');
+        $this->appID = config('ec-manager.AppID');
+        $this->appSecret = config('ec-manager.AppSecret');
     }
 
     /**
@@ -45,7 +55,7 @@ class ECManager
     {
         return [
             'authorization' => $this->accessToken(),
-            'corp_id' => config('ec-manager.CorpID'),
+            'corp_id' => $this->corpID,
             'cache-control' => 'no-cache'
         ];
     }
@@ -58,8 +68,8 @@ class ECManager
     {
         $response = $this->client->post('auth/accesstoken', [
             'json' => [
-                'appId' => config('ec-manager.AppID'),
-                'appSecret' => config('ec-manager.AppSecret')
+                'appId' => $this->appID,
+                'appSecret' => $this->appSecret
             ]
         ]);
 
@@ -68,6 +78,22 @@ class ECManager
             return $result->data->accessToken;
         }
         return false;
+    }
+
+    /**
+     * 动态设置配置
+     * @param $corpID
+     * @param $appID
+     * @param $appSecret
+     * @return $this
+     */
+    public function setConfig($corpID, $appID, $appSecret)
+    {
+        $this->corpID = $corpID;
+        $this->appID = $appID;
+        $this->appSecret = $appSecret;
+
+        return $this;
     }
 
     /**
