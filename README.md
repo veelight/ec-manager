@@ -3,9 +3,9 @@
 ### Installation
 
 1. From your laravel projects root folder in terminal run:
-
+```
     composer require maiev/ec-manager
-
+```
 2. Register the package
 
 - Laravel 5.5 and up Uses package auto discovery feature
