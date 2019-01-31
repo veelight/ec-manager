@@ -1,6 +1,6 @@
-### EC for Laravel
+# EC for Laravel
 
-##### Installation
+### Installation
 
 1. From your laravel projects root folder in terminal run:
 
